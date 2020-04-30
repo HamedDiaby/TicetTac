@@ -1,0 +1,84 @@
+<%- include('header'); %>
+
+<div class="d-flex flex-column align-items-center trips">
+    <div class="col-sm-10 col-md-6">
+        <h5 class="text-white">My tickets :</h5>
+    </div>
+    
+    <table class="table table-borderless col-sm-10 col-md-10 col-lg-10">
+        <thead class="bg-white">
+          <tr>
+            <th scope="col" class="d-none d-sm-block">N°</th>
+            <th scope="col">Journey</th>
+            <th scope="col">Date</th>
+            <th scope="col">Departure time</th>
+            <th scope="col">Price</th>
+          </tr>
+        </thead>
+        <tfoot class="bg-tfoot-basket">
+            <tr>
+                <th scope="col" class="d-none d-sm-block"></th>
+                <th scope="col">Total</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col">218 €</th>
+            </tr>
+        </tfoot>
+        <tbody class="bg-white">
+          <tr>
+            <th scope="row" class="d-none d-sm-block">1</th>
+            <td>Paris/ Lille</td>
+            <td>02/08/2019</td>
+            <td>15:00 pm</td>
+            <td>93 €</td>
+          </tr>
+          <tr>
+            <th scope="row" class="d-none d-sm-block">2</th>
+            <td>Paris/ Bordeaux</td>
+            <td>08/12/2019</td>
+            <td>19:00 pm</td>
+            <td>125 €</td>
+          </tr>
+        </tbody>
+    </table>
+</div>
+
+    <button type="button" class="offset-9 btn btn-danger" data-toggle="modal" data-target="#exampleModal">Confirm</button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">My journey recap</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center m-1">
+                    <p class="font-weight-bold">Paris/ Lille</p>
+                    <small class="text-secondary">train departure at : 15:00pm</small>
+                    <label class="font-weight-bold">93 €</label>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center m-1">
+                    <p class="font-weight-bold">Paris/ Bordeaux</p>
+                    <small class="text-secondary">train departure at : 15:00pm</small>
+                    <label class="font-weight-bold">125 €</label>
+                </li>
+            </ul>
+
+            <div class="checkout">
+                <label>Total : 218€</label>
+                <button class="offset-9 btn btn-outline-danger">Checkout</button>
+            </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%- include('footer'); %>
+

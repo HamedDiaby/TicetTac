@@ -99,5 +99,12 @@ router.get('/result', function(req, res, next) {
 router.get('/trips', function(req, res, next) {
   res.render('trips');
 });
+router.get('/basket', function(req, res, next) {
+  res.render('basket');
+});
+router.get('/my-last-trips', function(req, res, next) {
+  res.render('my-last-trips');
+});
+
 
 module.exports = router;
