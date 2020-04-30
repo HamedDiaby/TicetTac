@@ -96,4 +96,8 @@ router.get('/result', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+router.get('/trips', function(req, res, next) {
+  res.render('trips');
+});
+
 module.exports = router;
