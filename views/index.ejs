@@ -4,19 +4,19 @@
   <h4>One-way ticket :</h4>
 </div>
 
-<form class="align-content-center">
+<form action='/trips' method="post" class="align-content-center">
   <div class="form-row">
 
     <div class="form-group col-12 offset-lg-3 col-lg-2">
-      <input type="text" class="form-control" id="input-departure" placeholder="departure city">
+      <input type="text" name="depart" class="form-control" id="input-departure" placeholder="departure city">
     </div>
 
     <div class="form-group col-12 col-lg-2">
-      <input type="text" class="form-control" id="input-arrival" placeholder="arrival city">
+      <input type="text" name="arrivee" class="form-control" id="input-arrival" placeholder="arrival city">
     </div>
 
     <div class="form-group col-12 col-lg-2">
-      <input type="date" class="form-control" id="input-date" placeholder="choose a date">
+      <input type="date" name="date_depart" class="form-control" id="input-date" placeholder="choose a date">
     </div>
     <div>
     <button type="submit" class="btn btn-danger btn-smd-flex align-items-center"> GO </button>

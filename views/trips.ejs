@@ -2,34 +2,23 @@
 
 <div class="d-flex flex-column align-items-center trips">
     <div class="col-sm-10 col-md-6">
-        <h5 class="text-white">Tickets available on 02/08 :</h5>
+      
+        <h5 class="text-white">Tickets available on <%=formatDate(voyages[0].date)%> :</h5>
     </div>
-    
+
     <ul class="list-group col-sm-10 col-md-8 col-lg-6">
+
+        <% for(var i=0; i<voyages.length; i++){%>
+
         <li class="list-group-item d-flex justify-content-between align-items-center m-1">
-            <p class="font-weight-bold">Paris/ Lille</p>
-            <small class="text-secondary">train departure at : 15:00pm</small>
+            <p class="font-weight-bold"><%=voyages[i].departure%> / <%=voyages[i].arrival%></p>
+            <small class="text-secondary">train departure at : <%=voyages[i].departureTime%></small>
             <div>
-                <label class="font-weight-bold">93 €</label>
+                <label class="font-weight-bold"><%=voyages[i].price%> €</label>
                 <button class="btn btn-danger">Ok</button>
             </div>
         </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center m-1">
-            <p class="font-weight-bold">Paris/ Lille</p>
-            <small class="text-secondary">train departure at : 15:00pm</small>
-            <div>
-                <label class="font-weight-bold">93 €</label>
-                <button class="btn btn-danger">Ok</button>
-            </div>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center m-1">
-            <p class="font-weight-bold">Paris/ Lille</p>
-            <small class="text-secondary">train departure at : 15:00pm</small>
-            <div>
-                <label class="font-weight-bold">93 €</label>
-                <button class="btn btn-danger">Ok</button>
-            </div>
-        </li>
+        <%}%>
     </ul>
 </div>
 
