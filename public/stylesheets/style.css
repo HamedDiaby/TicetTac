@@ -27,3 +27,18 @@ font-weight: bold;
   text-align: center;
   font-style: italic;
 }
+
+h4 {
+  color : #E6F2FA;
+  margin-top: 45px;
+  margin-bottom: 25px;
+}
+
+.btn{
+  margin-left : 25px;
+}
+
+.img-bg {
+  width: 250px;
+  margin: 40px
+}
