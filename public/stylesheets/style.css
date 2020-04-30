@@ -36,3 +36,23 @@ font-weight: bold;
 .checkout{
   margin-top: 5%;
 }
+
+h4 {
+  color : #E6F2FA;
+  margin-top: 45px;
+  margin-bottom: 25px;
+}
+
+.btn{
+  margin-left : 25px;
+}
+
+.img-bg {
+  width: 250px;
+  margin: 40px
+}
+
+.sign{
+  margin-top: 100px;
+  margin-bottom: 25px;
+}

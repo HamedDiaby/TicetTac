@@ -42,6 +42,15 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+/* GET login. */
+router.get('/login', function(req, res, next) {
+  res.render('login', { title: 'Express' });
+});
+
+/* GET Oups. */
+router.get('/oups', function(req, res, next) {
+  res.render('oups', { title: 'Express' });
+});
 
 // Remplissage de la base de donnée, une fois suffit
 router.get('/save', async function(req, res, next) {
