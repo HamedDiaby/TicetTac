@@ -22,27 +22,27 @@
                 <th scope="col">Total</th>
                 <th scope="col"></th>
                 <th scope="col"></th>
-                <th scope="col">218 €</th>
+                <th scope="col"><%=user.total%> €</th>
                 <th scope="col"></th>
             </tr>
         </tfoot>
         <tbody class="bg-white">
-          <tr>
-            <th scope="row" class="d-none d-sm-block">1</th>
-            <td>Paris/ Lille</td>
-            <td>02/08/2019</td>
-            <td>15:00 pm</td>
-            <td>93 €</td>
-            <td class="trash"><a href="/trash"><i class="far fa-trash-alt"></i></a></i></td>
-          </tr>
-          <tr>
-            <th scope="row" class="d-none d-sm-block">2</th>
-            <td>Paris/ Bordeaux</td>
-            <td>08/12/2019</td>
-            <td>19:00 pm</td>
-            <td>125 €</td>
-            <td class="trash"><a href="/trash"><i class="far fa-trash-alt"></i></a></td>
-          </tr>
+
+          <%for(var i=0; i<mytrips.length; i++){%>
+
+            
+            <tr>
+              <th scope="row" class="d-none d-sm-block">1</th>
+              <td><%=mytrips[i].departure%> / <%=mytrips[i].arrival%></td>
+              <td><%=formatDate(mytrips[i].date)%></td>
+              <td><%=mytrips[i].departureTime%></td>
+              <td><%=mytrips[i].price%> €</td>
+              <td class="trash"><a href="/trash?position=<%=i%>"><i class="far fa-trash-alt"></i></a></td>
+            </tr>
+          <%}%>
+
+        
+
         </tbody>
     </table>
 </div>

@@ -15,7 +15,7 @@
             <small class="text-secondary">train departure at : <%=voyages[i].departureTime%></small>
             <div>
                 <label class="font-weight-bold"><%=voyages[i].price%> €</label>
-                <a href="/add-trips?id=<%=voyages[i].%>&userid=<%=user.id%>" class="btn btn-danger">Ok</a>
+                <a href="/add-trips?depart=<%=voyages[i].departure%>&arrivee=<%=voyages[i].arrival%>&departuretime=<%=voyages[i].departureTime%>&price=<%=voyages[i].price%>&date=<%=voyages[i].date%>" class="btn btn-danger">Ok</a>
             </div>
         </li>
         <%}%>

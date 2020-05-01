@@ -20,17 +20,33 @@
       </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav offset-md-9 d-flex justify-content-end">
+
+          <%if(user.id != ""){%>
+
           <li class="nav-item active">
-            <a class="nav-link " href="/login">Login</a>
+              <a class="nav-link" href="#">Welcome <%=user.firstname%></a>
           </li>
 
+          <li class="nav-item active">
+            <a class="nav-link" href="/gobasket?userid=<%=user.id%>"><i class="fas fa-cart-plus"></i></a>
+        </li>
+     
           <li class="nav-item">
-            <a class="nav-link" href="#">Logout </a>
-          </li>
-          
-            <li class="nav-item">
               <a class="nav-link" href="#">My last trips </a>
             </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Logout </a>
+            </li>
+       
+            <%}else{%>
+
+            <li class="nav-item active">
+              <a class="nav-link " href="/login">Login</a>
+            </li>
+
+            <%}%>
+    
             </ul>  
     </div>      
   </nav>
