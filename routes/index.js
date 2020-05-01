@@ -111,7 +111,29 @@ res.render('trips', {voyages, user: req.session.user});
 /* GET add Trip. */
 router.get('/add-trips', async function(req, res, next) {
 
-  var user = await userModel.findOne({_id: req.query.userid});
+  var user = await userModel.findOne({_id: req.session.user.id});
+
+  console.log(req.query);
+
+  user.mylasttrips.push({
+    departure: req.query.depart,
+    arrival: req.query.arrivee,
+    date: req.query.date,
+    departureTime: req.query.departuretime,
+    price: req.query.price,
+  });
+
+  var total = 0;
+
+  for(var i=0; i<user.mylasttrips.length; i++){
+  total += user.mylasttrips[i].price;
+  }
+
+  req.session.user.total = total;
+
+  console.log(total);
+
+  res.render('basket',{mytrips: user.mylasttrips, user: req.session.user})
 
   // user.basket.push({
   //   journeyId: req.query.id
@@ -119,34 +141,26 @@ router.get('/add-trips', async function(req, res, next) {
   
   // var savedBasket = await user.save();
 
-  var newJourney = [];
+  // var newJourney = [];
 
-  for(var i=0; i<savedBasket.basket.length; i++){
-    var eachJourney = await journeyModel.findById(savedBasket.basket[i].journeyId);
+  // for(var i=0; i<savedBasket.basket.length; i++){
+  //   var eachJourney = await journeyModel.findById(savedBasket.basket[i].journeyId);
 
-    newJourney.push({    
-      departure: eachJourney.departure,
-      arrival: eachJourney.arrival,
-      date: eachJourney.date,
-      departureTime: eachJourney.departureTime,
-      price: eachJourney.price,
-      id: eachJourney._id
-    })
-    console.log(eachJourney);
-  }
-  req.session.user.basket = newJourney;
+  //   newJourney.push({    
+  //     departure: eachJourney.departure,
+  //     arrival: eachJourney.arrival,
+  //     date: eachJourney.date,
+  //     departureTime: eachJourney.departureTime,
+  //     price: eachJourney.price,
+  //     id: eachJourney._id
+  //   })
+  //   console.log(eachJourney);
+  // }
+  // req.session.user.basket = newJourney;
 
-  var total = 0;
+  // console.log(req.session.user);
 
-  for(var i=0; i<newJourney.length; i++){
-    total += newJourney[i].price;
-  }
-
-  req.session.user.total = total;
-
-  console.log(req.session.user);
-
-  res.redirect('/basket');
+  //res.redirect('/basket');
 });
 
 /* GET basket. */
@@ -170,15 +184,26 @@ router.get('/trash', async function(req, res, next) {
 
   var user = await userModel.findById(req.session.user.id);
 
-    user.basket.splice(req.query.position, 1);
+    user.mylasttrips.splice(req.query.position, 1);
 
     console.log(req.query.position);
   
-  res.redirect('/basket');
+    var total = 0;
+
+    for(var i=0; i<user.mylasttrips.length; i++){
+    total += user.mylasttrips[i].price;
+    }
+  
+    req.session.user.total = total;
+
+
+  res.render('basket', {mytrips: user.mylasttrips, user: req.session.user});
 });
 
 /* GET my-last-trips. */
-router.get('/my-last-trips', function(req, res, next) {
+router.get('/my-last-trips', async function(req, res, next) {
+
+  var historic = await userModel.findOne()
 
   res.render('my-last-trips', {user: req.session.user});
 });

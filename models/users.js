@@ -4,8 +4,7 @@ const mongoose = require('./bddconnect');
 //   journeyId: [{type: mongoose.Schema.Types.ObjectId, ref: 'journey' }]
 // });
 
-var mytripsSchema = mongoose.Schema({
-    name: String,    
+var mytripsSchema = mongoose.Schema({  
     departure: String,
     arrival: String,
     date: Date,

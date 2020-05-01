@@ -28,15 +28,15 @@
         </tfoot>
         <tbody class="bg-white">
 
-          <%for(var i=0; i<user.basket.length; i++){%>
+          <%for(var i=0; i<mytrips.length; i++){%>
 
             
             <tr>
               <th scope="row" class="d-none d-sm-block">1</th>
-              <td><%=user.basket[i].departure%> / <%=user.basket[i].arrival%></td>
-              <td><%=formatDate(user.basket[i].date)%></td>
-              <td><%=user.basket[i].departureTime%></td>
-              <td><%=user.basket[i].price%> €</td>
+              <td><%=mytrips[i].departure%> / <%=mytrips[i].arrival%></td>
+              <td><%=formatDate(mytrips[i].date)%></td>
+              <td><%=mytrips[i].departureTime%></td>
+              <td><%=mytrips[i].price%> €</td>
               <td class="trash"><a href="/trash?position=<%=i%>"><i class="far fa-trash-alt"></i></a></td>
             </tr>
           <%}%>
