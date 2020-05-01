@@ -147,6 +147,7 @@ router.get('/basket', async function(req, res, next){
 res.render('basket', {user: req.session.user, mytrips: user.mylasttrips})
 })
 
+
 /* GET trash. */
 router.get('/trash', async function(req, res, next) {
 
@@ -154,7 +155,7 @@ router.get('/trash', async function(req, res, next) {
 
     user.mylasttrips.splice(req.query.position, 1);
 
-    console.log(req.query.position);
+    await user.save();
   
     var total = 0;
 
