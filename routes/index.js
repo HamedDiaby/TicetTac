@@ -113,8 +113,6 @@ router.get('/add-trips', async function(req, res, next) {
 
   var user = await userModel.findOne({_id: req.session.user.id});
 
-  console.log(req.query);
-
   user.mylasttrips.push({
     departure: req.query.depart,
     arrival: req.query.arrivee,
@@ -122,6 +120,8 @@ router.get('/add-trips', async function(req, res, next) {
     departureTime: req.query.departuretime,
     price: req.query.price,
   });
+
+  await user.save()
 
   var total = 0;
 
@@ -131,43 +131,21 @@ router.get('/add-trips', async function(req, res, next) {
 
   req.session.user.total = total;
 
-  console.log(total);
+  req.session.user.basket = user.mylasttrips
 
   res.render('basket',{mytrips: user.mylasttrips, user: req.session.user})
 
-  // user.basket.push({
-  //   journeyId: req.query.id
-  // });
-  
-  // var savedBasket = await user.save();
-
-  // var newJourney = [];
-
-  // for(var i=0; i<savedBasket.basket.length; i++){
-  //   var eachJourney = await journeyModel.findById(savedBasket.basket[i].journeyId);
-
-  //   newJourney.push({    
-  //     departure: eachJourney.departure,
-  //     arrival: eachJourney.arrival,
-  //     date: eachJourney.date,
-  //     departureTime: eachJourney.departureTime,
-  //     price: eachJourney.price,
-  //     id: eachJourney._id
-  //   })
-  //   console.log(eachJourney);
-  // }
-  // req.session.user.basket = newJourney;
-
-  // console.log(req.session.user);
-
-  //res.redirect('/basket');
 });
 
 /* GET basket. */
 
-router.get('/basket', function(req, res, next){
+router.get('/basket', async function(req, res, next){
 
-res.render('basket', {user: req.session.user})
+  var user = await userModel.findById(req.session.user.id)
+  
+  //req.sessions.user.basket = user.mylasttrips
+  console.log(user.mylasttrips);
+res.render('basket', {user: req.session.user, mytrips: user.mylasttrips})
 })
 
 /* GET gobasket. */
@@ -203,65 +181,10 @@ router.get('/trash', async function(req, res, next) {
 /* GET my-last-trips. */
 router.get('/my-last-trips', async function(req, res, next) {
 
-  var historic = await userModel.findOne()
+  var historic = await userModel.findById(req.session.user.id)
 
-  res.render('my-last-trips', {user: req.session.user});
+  res.render('my-last-trips', {user: req.session.user, historic});
 });
 
 
 module.exports = router;
-
-// Remplissage de la base de donnée, une fois suffit
-// router.get('/save', async function(req, res, next) {
-
-//   // How many journeys we want
-//   var count = 300
-
-//   // Save  ---------------------------------------------------
-//     for(var i = 0; i< count; i++){
-
-//     departureCity = city[Math.floor(Math.random() * Math.floor(city.length))]
-//     arrivalCity = city[Math.floor(Math.random() * Math.floor(city.length))]
-
-//     if(departureCity != arrivalCity){
-
-//       var newUser = new journeyModel ({
-//         departure: departureCity , 
-//         arrival: arrivalCity, 
-//         date: date[Math.floor(Math.random() * Math.floor(date.length))],
-//         departureTime:Math.floor(Math.random() * Math.floor(23)) + ":00",
-//         price: Math.floor(Math.random() * Math.floor(125)) + 25,
-//       });
-       
-//        await newUser.save();
-
-//     }
-
-//   }
-//   res.render('index', { title: 'Express' });
-// });
-
-// var city = ["Paris","Marseille","Nantes","Lyon","Rennes","Melun","Bordeaux","Lille"]
-// var date = ["2018-11-20","2018-11-21","2018-11-22","2018-11-23","2018-11-24"]
-
-// Cette route est juste une verification du Save.
-// Vous pouvez choisir de la garder ou la supprimer.
-// router.get('/result', function(req, res, next) {
-
-//   // Permet de savoir combien de trajets il y a par ville en base
-//   for(i=0; i<city.length; i++){
-
-//     journeyModel.find( 
-//       { departure: city[i] } , //filtre
-  
-//       function (err, journey) {
-
-//           console.log(`Nombre de trajets au départ de ${journey[0].departure} : `, journey.length);
-//       }
-//     )
-
-//   }
-
-
-//   res.render('index', { title: 'Express' });
-// });

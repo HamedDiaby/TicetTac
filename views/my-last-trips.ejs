@@ -15,23 +15,25 @@
           </tr>
         </thead>
         <tbody class="bg-white">
+
+          <% for(var i=0; i<historic.mylasttrips.length; i++){%>
+
           <tr>
-            <td>Paris/ Lille</td>
-            <td>02/08/2019</td>
-            <td>15:00 pm</td>
-            <td>93 €</td>
+            <td><%=historic.mylasttrips[i].departure%>/ <%=historic.mylasttrips[i].arrival%></td>
+            <td><%=formatDate(historic.mylasttrips[i].date)%></td>
+            <td><%=historic.mylasttrips[i].departureTime%></td>
+            <td><%=historic.mylasttrips[i].price%> €</td>
           </tr>
-          <tr>
-            <td>Paris/ Bordeaux</td>
-            <td>08/12/2019</td>
-            <td>19:00 pm</td>
-            <td>125 €</td>
-          </tr>
+
+         <%}%>
+
+       
+
         </tbody>
     </table>
 </div>
 
-    <button type="button" class="confirm btn btn-danger" data-toggle="modal" data-target="#exampleModal">Home</button>
+    <a href="/" type="button" class="confirm btn btn-danger">Home</a>
 
   <%- include('footer'); %>
 

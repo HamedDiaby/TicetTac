@@ -62,21 +62,20 @@
         <div class="modal-body">
           
             <ul class="list-group">
+
+              <%for(var i=0; i<mytrips.length; i++){%>
+
                 <li class="list-group-item d-flex justify-content-between align-items-center m-1">
-                    <p class="font-weight-bold">Paris/ Lille</p>
-                    <small class="text-secondary">train departure at : 15:00pm</small>
-                    <label class="font-weight-bold">93 €</label>
+                    <p class="font-weight-bold"><%=mytrips[i].departure%> / <%=mytrips[i].arrival%></p>
+                    <small class="text-secondary">train departure at : <%=mytrips[i].departureTime%></small>
+                    <label class="font-weight-bold"><%=mytrips[i].price%> €</label>
                 </li>
-                <li class="list-group-item d-flex justify-content-between align-items-center m-1">
-                    <p class="font-weight-bold">Paris/ Bordeaux</p>
-                    <small class="text-secondary">train departure at : 15:00pm</small>
-                    <label class="font-weight-bold">125 €</label>
-                </li>
+                <%}%>
             </ul>
 
             <div class="checkout">
-                <label>Total : 218€</label>
-                <button class="offset-9 btn btn-outline-danger">Checkout</button>
+                <label>Total : <%=user.total%> €</label>
+                <a href="/my-last-trips" class="offset-9 btn btn-outline-danger">Checkout</a>
             </div>
 
         </div>
