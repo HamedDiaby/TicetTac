@@ -28,6 +28,7 @@ router.get('/sign-up', function(req, res, next) {
 
 /* GET Oups. */
 router.get('/oups', function(req, res, next) {
+
   res.render('oups', { title: 'Express' });
 });
 
@@ -40,15 +41,20 @@ router.get('/logout', function(req, res, next) {
 /* GET trips. */
 router.post('/trips', async function(req, res, next) {
   
-var voyages = await journeyModel.find({ departure: req.body.depart, 
+var voyages = await journeyModel.find({departure: req.body.depart, 
 arrival: req.body.arrivee, 
 date: new Date(req.body.date_depart)});
 
-console.log(req.body.arrivee);
-console.log("===TRIP====",voyages);
+console.log(voyages);
 
-  res.render('trips', {voyages});
+if(voyages.length == 0){
+  res.redirect('/oups');
+}else{
+res.render('trips', {voyages});
+}
 });
+
+
 
 /* GET basket. */
 router.get('/basket', function(req, res, next) {
