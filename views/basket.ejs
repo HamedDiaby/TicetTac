@@ -13,6 +13,7 @@
             <th scope="col">Date</th>
             <th scope="col">Departure time</th>
             <th scope="col">Price</th>
+            <th scope="col">Trash</th>
           </tr>
         </thead>
         <tfoot class="bg-tfoot-basket">
@@ -22,6 +23,7 @@
                 <th scope="col"></th>
                 <th scope="col"></th>
                 <th scope="col">218 €</th>
+                <th scope="col"></th>
             </tr>
         </tfoot>
         <tbody class="bg-white">
@@ -31,6 +33,7 @@
             <td>02/08/2019</td>
             <td>15:00 pm</td>
             <td>93 €</td>
+            <td class="trash"><a href="/trash"><i class="far fa-trash-alt"></i></a></i></td>
           </tr>
           <tr>
             <th scope="row" class="d-none d-sm-block">2</th>
@@ -38,15 +41,16 @@
             <td>08/12/2019</td>
             <td>19:00 pm</td>
             <td>125 €</td>
+            <td class="trash"><a href="/trash"><i class="far fa-trash-alt"></i></a></td>
           </tr>
         </tbody>
     </table>
 </div>
 
-    <button type="button" class="offset-9 btn btn-danger" data-toggle="modal" data-target="#exampleModal">Confirm</button>
+    <button type="button" class="confirm btn btn-danger" data-toggle="modal" data-target="#confirm">Confirm</button>
   
   <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="confirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
