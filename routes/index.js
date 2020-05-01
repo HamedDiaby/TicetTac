@@ -142,20 +142,10 @@ router.get('/add-trips', async function(req, res, next) {
 router.get('/basket', async function(req, res, next){
 
   var user = await userModel.findById(req.session.user.id)
-  
-  //req.sessions.user.basket = user.mylasttrips
+
   console.log(user.mylasttrips);
 res.render('basket', {user: req.session.user, mytrips: user.mylasttrips})
 })
-
-/* GET gobasket. */
-router.get('/gobasket', function(req, res, next) {
-  
-  req.session.user.id = req.query.userid
-
-  console.log(req.session.user);
-  res.redirect('/basket');
-});
 
 /* GET trash. */
 router.get('/trash', async function(req, res, next) {
